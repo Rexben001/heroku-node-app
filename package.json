@@ -4,12 +4,17 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
-    "express": "^4.17.1"
+    "chai": "^4.2.0",
+    "express": "^4.17.1",
+    "mocha": "^7.0.0",
+    "nyc": "^15.0.0"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "mocha app.test.js",
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
+    "coverage": "nyc report --reporter=text-lcov | coveralls && nyc report --reporter=lcov"
   },
   "repository": {
     "type": "git",
